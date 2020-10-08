@@ -2,6 +2,8 @@
 # some basic cryptography patterns; it's meant to be a simple tool, with a simple interface, that any person can easily
 # use to trade some secret messages with friends.
 
+import numpy, math
+
 
 # The input the users will give is a string; but, to replace letters individually, we need to work with lists; on the
 # inverse path, to show the user a clear result, we need to give them back a string, not the manipulated list. The first
@@ -39,3 +41,29 @@ def EncodeSimpleSubstitution(input_list, steps):
 
     return input_list
 
+
+# This function will encode a message by using Transposition, based on a key; that means that the characters of a
+# message are distributed inside a matrix, line by line, with a line length defined by a key; then, the message is
+# rewritten by putting together the same character column by column (instead of line by line). For this to work,
+# we need to transform our list into an array, and then reshape it; but, since arrays cannot be extended,
+# first we have to make sure the list to be transformed fits the matrix shape we'll use; to that end, we append extra
+# whitespace characters to the list that doesn't fit an exact matrix. The boolean parameter defines if the function is
+# encoding OR decoding a given message
+
+def Transposition(input_list, key, is_encoding=True):
+
+    list_height = math.ceil(len(input_list) / key)
+    while len(input_list) != (list_height * key):
+        input_list.append(" ")
+    array = numpy.array(input_list)
+    if is_encoding:
+        new_array = array.reshape(list_height, key)
+    else:
+        new_array = array.reshape(key, list_height)
+    output_list = []
+
+    for i in range(key):
+        for j in range(list_height):
+                output_list.append(new_array[j, i])
+
+    return output_list
