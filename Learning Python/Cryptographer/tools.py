@@ -3,17 +3,18 @@
 
 class Tools:
 
-# When dealing with user input, we get strings; when handling each character of a string as a separated element, we
-# need lists; when outputting results, we need strings once again. These two functions will take care of transforming
-# strings into lists, and vice versa.
+    # When dealing with user input, we get strings; when handling each character of a string as a separated element,
+    # we need lists; when outputting results, we need strings once again. These two functions will take care of
+    # transforming strings into lists, and vice versa.
 
-def StringToList(text):
-    new_list = list(text)
+    @staticmethod
+    def StringToList(text):
+        new_list = list(text)
 
-    return new_list
+        return new_list
 
+    @staticmethod
+    def ListToString(output_list):
+        new_string = "".join(output_list)
 
-def ListToString(output_list):
-    new_string = "".join(output_list)
-
-    return new_string
+        return new_string
