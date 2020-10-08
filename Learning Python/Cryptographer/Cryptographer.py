@@ -14,9 +14,29 @@ def StringToList(text):
 
 
 def ListToString(output_list):
-    new_string = ''
-
-    for i in output_list:
-        new_string += str(i)
+    new_string = "".join(output_list)
 
     return new_string
+
+
+# The next function get a list made by the input text and change each letter by a given number of steps; this function
+# allows both the encoding and the decoding of simple letter substitution messages; the function ignore special
+# characters and blank space.
+
+def EncodeSimpleSubstitution(input_list, steps):
+
+    for i in input_list:
+        num = ord(i)
+        if num not in range(65, 91) and num not in range(97, 123):
+            continue
+        else:
+            for n in range(steps):
+                num += 1
+                if num == 91:
+                    num = 65
+                elif num == 123:
+                    num = 97
+        i = chr(num)
+
+    return input_list
+
