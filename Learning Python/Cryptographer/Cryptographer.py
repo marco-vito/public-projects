@@ -24,9 +24,8 @@ def ListToString(output_list):
 # characters and blank space.
 
 def EncodeSimpleSubstitution(input_list, steps):
-
-    for i in input_list:
-        num = ord(i)
+    for i in range(len(input_list)):
+        num = ord(input_list[i])
         if num not in range(65, 91) and num not in range(97, 123):
             continue
         else:
@@ -36,7 +35,7 @@ def EncodeSimpleSubstitution(input_list, steps):
                     num = 65
                 elif num == 123:
                     num = 97
-        i = chr(num)
+        input_list[i] = chr(num)
 
     return input_list
 
