@@ -1,7 +1,7 @@
 # This classes takes care of the Substitution method of cryptography, in which a message use a number of steps to
 # change each of its letters to another letter located further away in the alphabet (a step of 4 would transform an
 # 'A' into an 'E'). It's a basic form of cryptography, but that serves to illustrate how Python can handle lists and
-# strings, in a fun way. The Encoding and Decoding steps of the process were put in separated functions to increase
+# strings, in a fun way. The Encoding and Decoding steps of the process were put in separated methods to increase
 # readability
 
 from tools import Tools
