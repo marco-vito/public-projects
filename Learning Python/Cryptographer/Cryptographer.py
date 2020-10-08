@@ -25,18 +25,26 @@ def ListToString(output_list):
 # allows both the encoding and the decoding of simple letter substitution messages; the function ignore special
 # characters and blank space.
 
-def EncodeSimpleSubstitution(input_list, steps):
+def Substitution(input_list, steps, is_encoding=True):
     for i in range(len(input_list)):
         num = ord(input_list[i])
         if num not in range(65, 91) and num not in range(97, 123):
             continue
         else:
             for n in range(steps):
-                num += 1
+                if is_encoding:
+                    num += 1
+                else:
+                    num -= 1
+
                 if num == 91:
                     num = 65
                 elif num == 123:
                     num = 97
+                elif num == 64:
+                    num = 90
+                elif num == 96:
+                    num = 122
         input_list[i] = chr(num)
 
     return input_list
@@ -51,7 +59,6 @@ def EncodeSimpleSubstitution(input_list, steps):
 # encoding OR decoding a given message
 
 def Transposition(input_list, key, is_encoding=True):
-
     list_height = math.ceil(len(input_list) / key)
     while len(input_list) != (list_height * key):
         input_list.append(" ")
@@ -64,6 +71,6 @@ def Transposition(input_list, key, is_encoding=True):
 
     for i in range(key):
         for j in range(list_height):
-                output_list.append(new_array[j, i])
+            output_list.append(new_array[j, i])
 
     return output_list
