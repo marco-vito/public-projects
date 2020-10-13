@@ -1,0 +1,1 @@
+In order to train myself in ython and learn more about the language, its tools and aplications, I've used the book "Impractical Python Projects", written by Lee Vaughan. The subfolders of this folder follow the book's chapter division, and inside each chapter folder one or more projects might exist to give my solutions to the exercises and challenges proposed by the book.
